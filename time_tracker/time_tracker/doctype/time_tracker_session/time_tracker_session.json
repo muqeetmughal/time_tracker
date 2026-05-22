@@ -6,33 +6,37 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "user",
-  "employee",
+  "session_tab",
+  "overview_section",
   "status",
-  "current_task",
+  "project_cb",
   "project",
-  "section_break_dates",
+  "current_task",
+  "assignments_section",
+  "user",
+  "employee_cb",
+  "employee",
+  "timestamps_tab",
+  "time_section",
   "started_at",
+  "last_heartbeat_cb",
   "last_heartbeat",
-  "section_break_system",
+  "system_tab",
+  "system_section",
   "machine_id",
+  "app_version_cb",
   "app_version"
  ],
  "fields": [
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "User",
-   "options": "User",
-   "reqd": 1
+   "fieldname": "session_tab",
+   "fieldtype": "Tab Break",
+   "label": "Session"
   },
   {
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "label": "Employee",
-   "options": "Employee"
+   "fieldname": "overview_section",
+   "fieldtype": "Section Break",
+   "label": "Overview"
   },
   {
    "fieldname": "status",
@@ -44,11 +48,8 @@
    "reqd": 1
   },
   {
-   "fieldname": "current_task",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Current Task",
-   "options": "Task"
+   "fieldname": "project_cb",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "project",
@@ -60,9 +61,45 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_dates",
+   "fieldname": "current_task",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Current Task",
+   "options": "Task"
+  },
+  {
+   "fieldname": "assignments_section",
    "fieldtype": "Section Break",
+   "label": "Assignments"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "timestamps_tab",
+   "fieldtype": "Tab Break",
    "label": "Timestamps"
+  },
+  {
+   "fieldname": "time_section",
+   "fieldtype": "Section Break",
+   "label": "Time"
   },
   {
    "fieldname": "started_at",
@@ -72,19 +109,32 @@
    "reqd": 1
   },
   {
+   "fieldname": "last_heartbeat_cb",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "last_heartbeat",
    "fieldtype": "Datetime",
    "label": "Last Heartbeat"
   },
   {
-   "fieldname": "section_break_system",
-   "fieldtype": "Section Break",
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
    "label": "System"
+  },
+  {
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Info"
   },
   {
    "fieldname": "machine_id",
    "fieldtype": "Data",
    "label": "Machine ID"
+  },
+  {
+   "fieldname": "app_version_cb",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "app_version",

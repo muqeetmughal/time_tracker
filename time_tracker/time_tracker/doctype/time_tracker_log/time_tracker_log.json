@@ -5,30 +5,33 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "user",
-  "employee",
+  "event_tab",
+  "event_details_section",
   "event_type",
-  "task",
-  "project",
+  "timestamp_cb",
   "timestamp",
+  "assignments_section",
+  "user",
+  "employee_cb",
+  "employee",
+  "project",
+  "task_cb",
+  "task",
+  "system_tab",
+  "system_section",
   "machine_id",
   "metadata"
  ],
  "fields": [
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "User",
-   "options": "User",
-   "reqd": 1
+   "fieldname": "event_tab",
+   "fieldtype": "Tab Break",
+   "label": "Event"
   },
   {
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "label": "Employee",
-   "options": "Employee"
+   "fieldname": "event_details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
   },
   {
    "fieldname": "event_type",
@@ -40,10 +43,39 @@
    "reqd": 1
   },
   {
-   "fieldname": "task",
+   "fieldname": "timestamp_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Timestamp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assignments_section",
+   "fieldtype": "Section Break",
+   "label": "Assignments"
+  },
+  {
+   "fieldname": "user",
    "fieldtype": "Link",
-   "label": "Task",
-   "options": "Task"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
   },
   {
    "fieldname": "project",
@@ -54,11 +86,24 @@
    "options": "Project"
   },
   {
-   "fieldname": "timestamp",
-   "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "label": "Timestamp",
-   "reqd": 1
+   "fieldname": "task_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "options": "Task"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Info"
   },
   {
    "fieldname": "machine_id",

@@ -6,35 +6,249 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "activity_tab",
+  "details_section",
   "activity_type",
+  "description_cb",
   "description",
-  "tab_2_tab",
+  "time_section",
   "start_time",
+  "end_time_cb",
   "end_time",
+  "duration_section",
   "duration_seconds",
+  "hours_cb",
   "hours",
-   "status",
-   "screenshots_count",
-   "camshots_count",
-   "keyboard_count",
-   "mouse_click_count",
-   "tab_3_tab",
-  "timesheet",
-  "timesheet_detail",
-  "is_billable",
-  "billing_rate",
-  "billing_amount",
+  "status_tab",
+  "status_section",
+  "status",
+  "source_cb",
   "source",
-  "tab_4_tab",
-  "employee",
-  "external_activity_id",
+  "metrics_section",
+  "screenshots_count",
+  "camshots_count_cb",
+  "camshots_count",
+  "keyboard_count",
+  "mouse_click_count_cb",
+  "mouse_click_count",
+  "billing_tab",
+  "billable_section",
+  "is_billable",
+  "billing_details_section",
+  "timesheet",
+  "timesheet_detail_cb",
+  "timesheet_detail",
+  "rates_section",
+  "billing_rate",
+  "billing_amount_cb",
+  "billing_amount",
+  "relations_tab",
+  "assignments_section",
   "user",
-   "client_id",
-   "project",
-   "task",
-   "activity_media"
-  ],
+  "employee_cb",
+  "employee",
+  "work_section",
+  "project",
+  "task_cb",
+  "task",
+  "system_tab",
+  "identifiers_section",
+  "external_activity_id",
+  "client_id_cb",
+  "client_id",
+  "media_tab",
+  "activity_media"
+ ],
  "fields": [
+  {
+   "fieldname": "activity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Activity"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Link",
+   "label": "Activity Type",
+   "options": "Activity Type"
+  },
+  {
+   "fieldname": "description_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "time_section",
+   "fieldtype": "Section Break",
+   "label": "Time"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Datetime",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Datetime",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "duration_section",
+   "fieldtype": "Section Break",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Int",
+   "label": "Duration (seconds)"
+  },
+  {
+   "fieldname": "hours_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "label": "Hours"
+  },
+  {
+   "fieldname": "status_tab",
+   "fieldtype": "Tab Break",
+   "label": "Status & Metrics"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nIdle\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
+  },
+  {
+   "fieldname": "source_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Web\nDesktop App\nMobile App"
+  },
+  {
+   "fieldname": "metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Activity Metrics"
+  },
+  {
+   "fieldname": "screenshots_count",
+   "fieldtype": "Int",
+   "label": "Screenshots"
+  },
+  {
+   "fieldname": "camshots_count_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "camshots_count",
+   "fieldtype": "Int",
+   "label": "Camshots"
+  },
+  {
+   "fieldname": "keyboard_count",
+   "fieldtype": "Int",
+   "label": "Keyboard Clicks"
+  },
+  {
+   "fieldname": "mouse_click_count_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mouse_click_count",
+   "fieldtype": "Int",
+   "label": "Mouse Clicks"
+  },
+  {
+   "fieldname": "billing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "billable_section",
+   "fieldtype": "Section Break",
+   "label": "Billable"
+  },
+  {
+   "fieldname": "is_billable",
+   "fieldtype": "Check",
+   "label": "Is Billable",
+   "default": "0"
+  },
+  {
+   "fieldname": "billing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "timesheet",
+   "fieldtype": "Link",
+   "label": "Timesheet",
+   "options": "Timesheet"
+  },
+  {
+   "fieldname": "timesheet_detail_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timesheet_detail",
+   "fieldtype": "Data",
+   "label": "Timesheet Detail"
+  },
+  {
+   "fieldname": "rates_section",
+   "fieldtype": "Section Break",
+   "label": "Rates"
+  },
+  {
+   "fieldname": "billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate"
+  },
+  {
+   "fieldname": "billing_amount_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billing_amount",
+   "fieldtype": "Currency",
+   "label": "Billing Amount"
+  },
+  {
+   "fieldname": "relations_tab",
+   "fieldtype": "Tab Break",
+   "label": "Relations"
+  },
+  {
+   "fieldname": "assignments_section",
+   "fieldtype": "Section Break",
+   "label": "Assignments"
+  },
   {
    "fieldname": "user",
    "fieldtype": "Link",
@@ -44,10 +258,19 @@
    "reqd": 1
   },
   {
+   "fieldname": "employee_cb",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "employee",
    "fieldtype": "Link",
    "label": "Employee",
    "options": "Employee"
+  },
+  {
+   "fieldname": "work_section",
+   "fieldtype": "Section Break",
+   "label": "Work"
   },
   {
    "fieldname": "project",
@@ -58,133 +281,51 @@
    "reqd": 1
   },
   {
+   "fieldname": "task_cb",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "task",
    "fieldtype": "Link",
    "label": "Task",
    "options": "Task"
   },
   {
-   "fieldname": "activity_type",
-   "fieldtype": "Link",
-   "label": "Activity Type",
-   "options": "Activity Type"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
-  },
-  {
-   "fieldname": "tab_2_tab",
+   "fieldname": "system_tab",
    "fieldtype": "Tab Break",
-   "label": "Tab 2"
+   "label": "System"
   },
   {
-   "fieldname": "start_time",
-   "fieldtype": "Datetime",
-   "label": "Start Time"
-  },
-  {
-   "fieldname": "end_time",
-   "fieldtype": "Datetime",
-   "label": "End Time"
-  },
-  {
-   "fieldname": "duration_seconds",
-   "fieldtype": "Int",
-   "label": "Duration Seconds"
-  },
-  {
-   "fieldname": "hours",
-   "fieldtype": "Float",
-   "label": "Hours"
-  },
-   {
-    "fieldname": "status",
-    "fieldtype": "Select",
-    "label": "Status",
-    "options": "Draft\nIdle\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
-   },
-   {
-    "fieldname": "screenshots_count",
-    "fieldtype": "Int",
-    "label": "Screenshots Count"
-   },
-   {
-    "fieldname": "camshots_count",
-    "fieldtype": "Int",
-    "label": "Camshots Count"
-   },
-   {
-    "fieldname": "keyboard_count",
-    "fieldtype": "Int",
-    "label": "Keyboard Count"
-   },
-   {
-    "fieldname": "mouse_click_count",
-    "fieldtype": "Int",
-    "label": "Mouse Click Count"
-   },
-   {
-    "fieldname": "tab_3_tab",
-    "fieldtype": "Tab Break",
-    "label": "Tab 3"
-   },
-  {
-   "fieldname": "timesheet",
-   "fieldtype": "Link",
-   "label": "Timesheet",
-   "options": "Timesheet"
-  },
-  {
-   "fieldname": "timesheet_detail",
-   "fieldtype": "Data",
-   "label": "Timesheet Detail"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_billable",
-   "fieldtype": "Check",
-   "label": "Is Billable"
-  },
-  {
-   "fieldname": "billing_rate",
-   "fieldtype": "Currency",
-   "label": "Billing Rate"
-  },
-  {
-   "fieldname": "billing_amount",
-   "fieldtype": "Currency",
-   "label": "Billing Amount"
-  },
-  {
-   "fieldname": "source",
-   "fieldtype": "Select",
-   "label": "Source",
-   "options": "Web\nDesktop App\nMobile App"
-  },
-  {
-   "fieldname": "tab_4_tab",
-   "fieldtype": "Tab Break",
-   "label": "Tab 4"
+   "fieldname": "identifiers_section",
+   "fieldtype": "Section Break",
+   "label": "Identifiers"
   },
   {
    "fieldname": "external_activity_id",
    "fieldtype": "Data",
    "label": "Activity ID"
   },
-   {
-    "fieldname": "client_id",
-    "fieldtype": "Data",
-    "label": "Client ID"
-   },
-   {
-    "fieldname": "activity_media",
-    "fieldtype": "Table",
-    "label": "Activity Media",
-    "options": "Activity Media"
-   }
-  ],
+  {
+   "fieldname": "client_id_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID"
+  },
+  {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "activity_media",
+   "fieldtype": "Table",
+   "label": "Activity Media",
+   "options": "Activity Media"
+  }
+ ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [
