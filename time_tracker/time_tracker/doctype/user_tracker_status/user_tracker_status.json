@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2026-05-22 12:00:00.000000",
  "doctype": "DocType",
  "field_order": [
@@ -86,8 +85,6 @@
    "label": "Duration"
   }
  ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
  "modified": "2026-05-22 12:00:00.000000",
@@ -109,9 +106,5 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
- "sort_field": "status",
- "sort_order": "ASC",
- "states": [],
- "track_changes": 1
+ "states": []
 }
