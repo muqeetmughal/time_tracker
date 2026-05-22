@@ -103,7 +103,7 @@
     "fieldname": "status",
     "fieldtype": "Select",
     "label": "Status",
-    "options": "Draft\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
+    "options": "Draft\nIdle\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
    },
    {
     "fieldname": "screenshots_count",

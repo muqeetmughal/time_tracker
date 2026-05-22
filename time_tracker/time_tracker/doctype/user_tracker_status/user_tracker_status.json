@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-05-22 12:00:00.000000",
+ "doctype": "DocType",
+ "field_order": [
+  "user",
+  "employee",
+  "employee_name",
+  "status",
+  "current_task",
+  "project",
+  "started_at",
+  "last_heartbeat",
+  "last_seen_seconds",
+  "machine_id",
+  "app_version",
+  "duration"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Data",
+   "label": "Employee"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "current_task",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Current Task"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Data",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "last_heartbeat",
+   "fieldtype": "Data",
+   "label": "Last Heartbeat"
+  },
+  {
+   "fieldname": "last_seen_seconds",
+   "fieldtype": "Int",
+   "label": "Last Seen (seconds)"
+  },
+  {
+   "fieldname": "machine_id",
+   "fieldtype": "Data",
+   "label": "Machine ID"
+  },
+  {
+   "fieldname": "app_version",
+   "fieldtype": "Data",
+   "label": "App Version"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2026-05-22 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Time Tracker",
+ "name": "User Tracker Status",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "status",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}
