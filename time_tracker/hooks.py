@@ -86,7 +86,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "time_tracker.install.before_install"
-# after_install = "time_tracker.install.after_install"
+after_install = "time_tracker.install.after_install"
 
 # Uninstallation
 # ------------

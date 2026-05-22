@@ -1,0 +1,222 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TE-.######",
+ "creation": "2026-05-18 17:39:58.955443",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "activity_type",
+  "description",
+  "tab_2_tab",
+  "start_time",
+  "end_time",
+  "duration_seconds",
+  "hours",
+   "status",
+   "screenshots_count",
+   "camshots_count",
+   "keyboard_count",
+   "mouse_click_count",
+   "tab_3_tab",
+  "timesheet",
+  "timesheet_detail",
+  "is_billable",
+  "billing_rate",
+  "billing_amount",
+  "source",
+  "tab_4_tab",
+  "employee",
+  "external_activity_id",
+  "user",
+   "client_id",
+   "project",
+   "task",
+   "activity_media"
+  ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "options": "Task"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Link",
+   "label": "Activity Type",
+   "options": "Activity Type"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tab 2"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Datetime",
+   "label": "Start Time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Datetime",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "duration_seconds",
+   "fieldtype": "Int",
+   "label": "Duration Seconds"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "label": "Hours"
+  },
+   {
+    "fieldname": "status",
+    "fieldtype": "Select",
+    "label": "Status",
+    "options": "Draft\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
+   },
+   {
+    "fieldname": "screenshots_count",
+    "fieldtype": "Int",
+    "label": "Screenshots Count"
+   },
+   {
+    "fieldname": "camshots_count",
+    "fieldtype": "Int",
+    "label": "Camshots Count"
+   },
+   {
+    "fieldname": "keyboard_count",
+    "fieldtype": "Int",
+    "label": "Keyboard Count"
+   },
+   {
+    "fieldname": "mouse_click_count",
+    "fieldtype": "Int",
+    "label": "Mouse Click Count"
+   },
+   {
+    "fieldname": "tab_3_tab",
+    "fieldtype": "Tab Break",
+    "label": "Tab 3"
+   },
+  {
+   "fieldname": "timesheet",
+   "fieldtype": "Link",
+   "label": "Timesheet",
+   "options": "Timesheet"
+  },
+  {
+   "fieldname": "timesheet_detail",
+   "fieldtype": "Data",
+   "label": "Timesheet Detail"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_billable",
+   "fieldtype": "Check",
+   "label": "Is Billable"
+  },
+  {
+   "fieldname": "billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate"
+  },
+  {
+   "fieldname": "billing_amount",
+   "fieldtype": "Currency",
+   "label": "Billing Amount"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Web\nDesktop App\nMobile App"
+  },
+  {
+   "fieldname": "tab_4_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tab 4"
+  },
+  {
+   "fieldname": "external_activity_id",
+   "fieldtype": "Data",
+   "label": "Activity ID"
+  },
+   {
+    "fieldname": "client_id",
+    "fieldtype": "Data",
+    "label": "Client ID"
+   },
+   {
+    "fieldname": "activity_media",
+    "fieldtype": "Table",
+    "label": "Activity Media",
+    "options": "Activity Media"
+   }
+  ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Activity Media",
+   "link_doctype": "Activity Media",
+   "link_fieldname": "activity_media"
+  }
+ ],
+ "modified": "2026-05-19 17:22:47.786317",
+ "modified_by": "Administrator",
+ "module": "Time Tracker",
+ "name": "Time Tracker Entry",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
