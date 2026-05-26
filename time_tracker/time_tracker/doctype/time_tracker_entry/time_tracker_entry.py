@@ -7,6 +7,7 @@ from frappe.model.document import Document
 
 
 class TimeTrackerEntry(Document):
-	def validate(self):
-		if self.get_doc_before_save():
-			frappe.throw(_("Time Tracker Entry cannot be modified after creation"))
+	# def validate(self):
+	# 	if self.get_doc_before_save():
+	# 		frappe.throw(_("Time Tracker Entry cannot be modified after creation"))
+	pass
