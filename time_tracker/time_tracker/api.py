@@ -41,20 +41,30 @@ def _update_cache(user: str, data: dict):
 	frappe.cache().hset(CACHE_KEY, user, json.dumps(data, default=str))
 
 
-def _create_log(user: str, event_type: str, data: dict):
-	doc = frappe.get_doc({
-		"doctype": "Time Tracker Log",
-		"user": user,
-		"employee": _get_employee(user),
-		"event_type": event_type,
-		"task": data.get("current_task"),
-		"project": data.get("project"),
-		"timestamp": data.get("timestamp", frappe.utils.now()),
-		"machine_id": data.get("machine_id"),
-		"metadata": json.dumps(data, default=str),
-	})
-	doc.insert(ignore_permissions=True)
-	return doc
+def _create_log(user: str, event_type: str, data: dict, retries: int = 3):
+	import uuid
+	import time as _time
+
+	for attempt in range(retries):
+		try:
+			doc = frappe.get_doc({
+				"doctype": "Time Tracker Log",
+				"user": user,
+				"employee": _get_employee(user),
+				"event_type": event_type,
+				"task": data.get("current_task"),
+				"project": data.get("project"),
+				"timestamp": data.get("timestamp", frappe.utils.now()),
+				"machine_id": data.get("machine_id"),
+				"metadata": json.dumps(data, default=str),
+				"name": str(uuid.uuid4()),
+			})
+			doc.insert(ignore_permissions=True)
+			return doc
+		except frappe.QueryDeadlockError:
+			if attempt == retries - 1:
+				raise
+			_time.sleep(0.2 * (attempt + 1))
 
 
 def _publish_realtime(user: str, data: dict):
