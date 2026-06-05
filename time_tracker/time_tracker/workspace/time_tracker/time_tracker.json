@@ -7,6 +7,7 @@
  "docstatus": 0,
  "doctype": "Workspace",
  "hide_custom": 0,
+ "icon": "clock-7",
  "idx": 0,
  "indicator_color": "green",
  "is_hidden": 0,
@@ -14,71 +15,77 @@
  "link_type": "DocType",
  "links": [
   {
-   "group": "Daily",
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Daily Time Log",
+   "link_count": 0,
    "link_to": "Daily Time Log",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Time Tracker Entry",
    "type": "Link"
   },
   {
-   "group": "Summaries",
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "User Time Summary",
+   "link_count": 0,
    "link_to": "User Time Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Time Tracker Entry",
    "type": "Link"
   },
   {
-   "group": "Summaries",
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Project Time Summary",
+   "link_count": 0,
    "link_to": "Project Time Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Time Tracker Entry",
    "type": "Link"
   },
   {
-   "group": "Summaries",
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Task Time Summary",
+   "link_count": 0,
    "link_to": "Task Time Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Time Tracker Entry",
    "type": "Link"
   },
   {
-   "group": "Performance",
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Employee Performance Summary",
+   "link_count": 0,
    "link_to": "Employee Performance Summary",
    "link_type": "Report",
    "onboard": 0,
+   "report_ref_doctype": "Time Tracker Entry",
    "type": "Link"
   }
  ],
- "modified": "2026-06-06 01:15:15.585852",
+ "modified": "2026-06-06 01:33:56.239920",
  "modified_by": "Administrator",
  "module": "Time Tracker",
  "name": "Time Tracker",
  "number_cards": [
   {
-   "document_type": "Time Tracker Session",
-   "function": "Count",
-   "filters_json": "[[\"status\", \"=\", \"Running\"]]",
    "label": "Active Sessions",
-   "type": "DocType"
+   "number_card_name": "Active Sessions"
   },
   {
-   "document_type": "Time Tracker Entry",
-   "function": "Count",
-   "filters_json": "[[\"start_time\", \"Timespan\", \"today\"]]",
    "label": "Today's Entries",
-   "type": "DocType"
+   "number_card_name": "Todays Entries"
   },
   {
-   "document_type": "Time Tracker Entry",
-   "function": "Count",
-   "filters_json": "[[\"creation\", \"Timespan\", \"today\"]]",
    "label": "Trackers Today",
-   "type": "DocType"
+   "number_card_name": "Trackers Today"
   }
  ],
  "owner": "Administrator",
