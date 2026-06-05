@@ -253,6 +253,39 @@ def sync_heartbeat():
 	frappe.response["message"] = "ok"
 
 
+@frappe.whitelist(methods=["POST"])
+def sync_heartbeat_ws():
+	"""Lightweight heartbeat via WebSocket — updates cache only, no log document."""
+	user = frappe.session.user
+	data = frappe.local.form_dict
+	status = data.get("status", "Running").capitalize()
+	now = frappe.utils.now()
+
+	existing_raw = frappe.cache().hget(CACHE_KEY, user)
+	existing = json.loads(existing_raw) if existing_raw else {}
+
+	cache_data = {
+		"status": status,
+		"project": data.get("project") or existing.get("project"),
+		"current_task": data.get("current_task") or existing.get("current_task"),
+		"started_at": existing.get("started_at") or _to_mysql_datetime(data.get("started_at")) or now,
+		"last_heartbeat": now,
+		"machine_id": data.get("machine_id") or existing.get("machine_id"),
+		"app_version": data.get("app_version") or existing.get("app_version"),
+	}
+
+	_update_cache(user, cache_data)
+	_publish_realtime(user, cache_data)
+
+	frappe.response["message"] = "ok"
+
+
+@frappe.whitelist(methods=["GET"])
+def ping():
+	"""Simple endpoint to verify the time_tracker app is installed."""
+	return {"app": "time_tracker", "status": "ok"}
+
+
 @frappe.whitelist(methods=["GET"])
 def get_tracker_status():
 	"""Return live tracker status for all users (for custom views)."""
