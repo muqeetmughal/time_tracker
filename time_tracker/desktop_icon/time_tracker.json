@@ -1,0 +1,22 @@
+{
+ "app": "time_tracker",
+ "bg_color": "gray",
+ "creation": "2026-06-06 01:02:53.710858",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_image": "/files/time_tracker.png",
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Time Tracker",
+ "link_to": "Time Tracker",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-06-06 01:07:08.665431",
+ "modified_by": "Administrator",
+ "name": "Time Tracker",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "sidebar": "Time Tracker",
+ "standard": 1
+}
