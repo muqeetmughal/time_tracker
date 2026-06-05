@@ -1,0 +1,125 @@
+{
+ "app": "time_tracker",
+ "charts": [],
+ "content": "[{\"id\":\"sc_tt_entry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Entry\",\"col\":3}},{\"id\":\"sc_tt_session\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Session\",\"col\":3}},{\"id\":\"sc_tt_log\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Log\",\"col\":3}},{\"id\":\"sc_user_status\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Tracker Status\",\"col\":3}},{\"id\":\"nc_active_sessions\",\"type\":\"number_card\",\"data\":{\"card\":\"Active Sessions\",\"col\":4}},{\"id\":\"nc_today_entries\",\"type\":\"number_card\",\"data\":{\"card\":\"Today's Entries\",\"col\":4}},{\"id\":\"nc_trackers_today\",\"type\":\"number_card\",\"data\":{\"card\":\"Trackers Today\",\"col\":4}},{\"id\":\"hdr_reports\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}}]",
+ "creation": "2026-06-06 01:02:53.674304",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Time Tracker",
+ "link_type": "DocType",
+ "links": [
+  {
+   "group": "Daily",
+   "label": "Daily Time Log",
+   "link_to": "Daily Time Log",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "group": "Summaries",
+   "label": "User Time Summary",
+   "link_to": "User Time Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "group": "Summaries",
+   "label": "Project Time Summary",
+   "link_to": "Project Time Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "group": "Summaries",
+   "label": "Task Time Summary",
+   "link_to": "Task Time Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "group": "Performance",
+   "label": "Employee Performance Summary",
+   "link_to": "Employee Performance Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-06-06 01:15:15.585852",
+ "modified_by": "Administrator",
+ "module": "Time Tracker",
+ "name": "Time Tracker",
+ "number_cards": [
+  {
+   "document_type": "Time Tracker Session",
+   "function": "Count",
+   "filters_json": "[[\"status\", \"=\", \"Running\"]]",
+   "label": "Active Sessions",
+   "type": "DocType"
+  },
+  {
+   "document_type": "Time Tracker Entry",
+   "function": "Count",
+   "filters_json": "[[\"start_time\", \"Timespan\", \"today\"]]",
+   "label": "Today's Entries",
+   "type": "DocType"
+  },
+  {
+   "document_type": "Time Tracker Entry",
+   "function": "Count",
+   "filters_json": "[[\"creation\", \"Timespan\", \"today\"]]",
+   "label": "Trackers Today",
+   "type": "DocType"
+  }
+ ],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Time Tracker Entry",
+   "link_to": "Time Tracker Entry",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Time Tracker Session",
+   "link_to": "Time Tracker Session",
+   "stats_filter": "[[\"status\",\"=\",\"Running\"]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Time Tracker Log",
+   "link_to": "Time Tracker Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "User Tracker Status",
+   "link_to": "User Tracker Status",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Time Tracker",
+ "type": "Workspace"
+}
