@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "creation": "2026-06-06 14:00:00",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "auto_create_timesheets",
+  "settings_section",
+  "company",
+  "entries_status",
+  "frequency",
+  "rates_section",
+  "costing_rate",
+  "billing_rate_cb",
+  "billing_rate",
+  "last_run"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "auto_create_timesheets",
+   "fieldtype": "Check",
+   "label": "Auto Create Timesheets"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "mandatory_depends_on": "auto_create_timesheets",
+   "options": "Company"
+  },
+  {
+   "default": "Completed",
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "entries_status",
+   "fieldtype": "Select",
+   "label": "Entry Statuses to Include",
+   "options": "Draft\nIdle\nRunning\nPaused\nSubmitted\nApproved\nCompleted\nTimesheet Created\nCancelled"
+  },
+  {
+   "default": "Daily",
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "label": "Frequency",
+   "options": "Hourly\nDaily\nWeekly\nMonthly"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "rates_section",
+   "fieldtype": "Section Break",
+   "label": "Default Rates"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "costing_rate",
+   "fieldtype": "Currency",
+   "label": "Costing Rate"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "billing_rate_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "billing_rate",
+   "fieldtype": "Currency",
+   "label": "Billing Rate"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "last_run",
+   "fieldtype": "Datetime",
+   "label": "Last Run",
+   "read_only": 1
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-06-06 14:36:12.017447",
+ "modified_by": "Administrator",
+ "module": "Time Tracker",
+ "name": "Tracker Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

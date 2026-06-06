@@ -198,7 +198,7 @@
    "fieldname": "is_billable",
    "fieldtype": "Check",
    "label": "Is Billable",
-   "default": "0"
+   "default": "1"
   },
   {
    "fieldname": "billing_details_section",

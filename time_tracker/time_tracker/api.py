@@ -228,6 +228,10 @@ def update_tracker_status():
 	_create_log(user, event_type, {**cache_data, "timestamp": now})
 	_publish_realtime(user, cache_data)
 
+	if status in ("Running", "Stopped", "Idle"):
+		from time_tracker.time_tracker.doctype.time_tracker_session.time_tracker_session import TimeTrackerSession
+		TimeTrackerSession.upsert(user, cache_data)
+
 	frappe.response["message"] = "ok"
 
 
@@ -260,6 +264,10 @@ def sync_heartbeat():
 	_create_log(user, "Heartbeat", {**cache_data, "timestamp": now})
 	_publish_realtime(user, cache_data)
 
+	if status in ("Running", "Stopped", "Idle"):
+		from time_tracker.time_tracker.doctype.time_tracker_session.time_tracker_session import TimeTrackerSession
+		TimeTrackerSession.upsert(user, cache_data)
+
 	frappe.response["message"] = "ok"
 
 
@@ -288,6 +296,78 @@ def sync_heartbeat_ws():
 	_publish_realtime(user, cache_data)
 
 	frappe.response["message"] = "ok"
+
+
+@frappe.whitelist(methods=["POST"])
+def create_timesheet_from_entries():
+	data = frappe.local.form_dict
+	entry_names = frappe.parse_json(data.get("entries", "[]"))
+	company = data.get("company")
+
+	if not entry_names or not company:
+		frappe.throw(_("Entries and Company are required"))
+
+	settings = frappe.get_single("Tracker Settings") if frappe.db.exists("Tracker Settings", "Tracker Settings") else frappe._dict()
+	default_costing_rate = settings.get("costing_rate") or 0
+	default_billing_rate = settings.get("billing_rate") or 0
+
+	entries = frappe.get_all(
+		"Time Tracker Entry",
+		filters={"name": ("in", entry_names), "status": ("!=", "Timesheet Created")},
+		fields=["name", "user", "employee", "project", "task", "activity_type",
+				"description", "start_time", "end_time", "hours", "is_billable",
+				"billing_rate", "billing_amount", "timesheet"],
+	)
+
+	if not entries:
+		frappe.throw(_("No valid Time Tracker Entries found"))
+
+	already_linked = [e.name for e in entries if e.timesheet]
+	if already_linked:
+		frappe.throw(_("Entries already linked to a Timesheet: {0}").format(", ".join(already_linked)))
+
+	entries_by_user = {}
+	for e in entries:
+		entries_by_user.setdefault(e.user, []).append(e)
+
+	created = []
+	for user, user_entries in entries_by_user.items():
+		ts = frappe.get_doc({
+			"doctype": "Timesheet",
+			"company": company,
+			"user": user,
+			"employee": user_entries[0].employee,
+			"naming_series": "TS-.YYYY.-",
+			"time_logs": [
+				{
+					"activity_type": e.activity_type,
+					"from_time": e.start_time,
+					"to_time": e.end_time,
+					"hours": e.hours,
+					"description": e.description,
+					"project": e.project,
+					"task": e.task,
+					"is_billable": e.is_billable,
+					"billing_rate": e.billing_rate or default_billing_rate,
+					"billing_amount": e.billing_amount,
+					"costing_rate": default_costing_rate,
+				}
+				for e in user_entries
+			],
+		})
+		ts.insert(ignore_permissions=True)
+
+		for row, e in zip(ts.time_logs, user_entries):
+			frappe.db.set_value("Time Tracker Entry", e.name, {
+				"timesheet": ts.name,
+				"timesheet_detail": row.name,
+				"status": "Timesheet Created",
+			})
+
+		created.append(ts.name)
+
+	frappe.response["message"] = _("Timesheet(s) created: {0}").format(", ".join(created))
+	frappe.response["timesheets"] = created
 
 
 @frappe.whitelist(methods=["GET"])

@@ -44,7 +44,7 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {"Time Tracker Entry" : "public/js/time_tracker_entry_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -138,34 +138,21 @@ after_install = "time_tracker.install.after_install"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Timesheet": {
+        "on_trash": "time_tracker.tasks.unlink_timesheet_entries",
+		"on_cancel": "time_tracker.tasks.unlink_timesheet_entries"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"time_tracker.tasks.all"
-# 	],
-# 	"daily": [
-# 		"time_tracker.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"time_tracker.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"time_tracker.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"time_tracker.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"hourly": [
+		"time_tracker.tasks.auto_create_timesheets"
+	],
+}
 
 # Testing
 # -------
