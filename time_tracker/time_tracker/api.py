@@ -370,6 +370,28 @@ def create_timesheet_from_entries():
 	frappe.response["timesheets"] = created
 
 
+@frappe.whitelist(methods=["POST"])
+def create_timesheets_from_settings():
+	settings = frappe.get_single("Tracker Settings")
+	if not settings.auto_create_timesheets:
+		frappe.throw(_("Enable Auto Create Timesheets in Tracker Settings first"))
+	if not settings.company or not settings.entries_status:
+		frappe.throw(_("Configure Company and Entry Statuses in Tracker Settings"))
+
+	from time_tracker.tasks import _create_timesheets
+
+	existing_statuses = [s.strip() for s in (settings.entries_status or "").split("\n") if s.strip()]
+	if "Completed" not in existing_statuses:
+		settings.entries_status = (settings.entries_status or "") + "\nCompleted"
+
+	created = _create_timesheets(settings)
+
+	if created:
+		frappe.response["message"] = _("Timesheets created: {0}").format(", ".join(created))
+	else:
+		frappe.response["message"] = _("No eligible entries found for Timesheet creation")
+
+
 @frappe.whitelist(methods=["GET"])
 def ping():
 	"""Simple endpoint to verify the time_tracker app is installed."""
