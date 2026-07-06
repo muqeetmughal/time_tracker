@@ -1,7 +1,7 @@
 {
  "app": "time_tracker",
  "charts": [],
- "content": "[{\"id\":\"sc_tt_entry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Entry\",\"col\":3}},{\"id\":\"sc_tt_session\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Session\",\"col\":3}},{\"id\":\"sc_tt_log\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Log\",\"col\":3}},{\"id\":\"sc_user_status\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Tracker Status\",\"col\":3}},{\"id\":\"hdr_reports\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"mf8z1Mfg-x\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "content": "[{\"id\":\"sc_tt_entry\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Entry\",\"col\":3}},{\"id\":\"sc_tt_session\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Session\",\"col\":3}},{\"id\":\"sc_tt_log\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Time Tracker Log\",\"col\":3}},{\"id\":\"sc_user_status\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Tracker Status\",\"col\":3}},{\"id\":\"hdr_reports\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"mf8z1Mfg-x\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"nN7tEVoHLq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tracker Dashboard\",\"col\":3}}]",
  "creation": "2026-06-06 01:02:53.674304",
  "custom_blocks": [],
  "docstatus": 0,
@@ -100,7 +100,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-06-06 13:16:32.829589",
+ "modified": "2026-06-17 16:35:42.744426",
  "modified_by": "Administrator",
  "module": "Time Tracker",
  "name": "Time Tracker",
@@ -118,6 +118,13 @@
    "link_to": "Time Tracker Entry",
    "stats_filter": "[]",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tracker Dashboard",
+   "link_to": "tracker-dashboard",
+   "type": "Page"
   },
   {
    "color": "Cyan",

@@ -24,3 +24,15 @@ class TrackerSettings(Document):
 			frappe.msgprint(_("Timesheets created: {0}").format(", ".join(created)))
 		else:
 			frappe.msgprint(_("No eligible entries found for Timesheet creation"))
+
+
+def get_user_rates(user):
+	settings = frappe.get_cached_doc("Tracker Settings")
+	default_billing = settings.billing_rate or 0
+	default_costing = settings.costing_rate or 0
+
+	for row in settings.get("user_rates") or []:
+		if row.user == user:
+			return (row.billing_rate or default_billing, row.costing_rate or default_costing)
+
+	return (default_billing, default_costing)

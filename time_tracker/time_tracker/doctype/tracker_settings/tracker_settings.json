@@ -14,6 +14,8 @@
   "costing_rate",
   "billing_rate_cb",
   "billing_rate",
+  "user_rates_section",
+  "user_rates",
   "last_run"
  ],
  "fields": [
@@ -76,6 +78,20 @@
    "fieldname": "billing_rate",
    "fieldtype": "Currency",
    "label": "Billing Rate"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "fieldname": "user_rates_section",
+   "fieldtype": "Section Break",
+   "label": "Per-User Rates"
+  },
+  {
+   "depends_on": "auto_create_timesheets",
+   "description": "Override the default rates above for specific users. A user not listed here uses the default rates.",
+   "fieldname": "user_rates",
+   "fieldtype": "Table",
+   "label": "User Rates",
+   "options": "Tracker User Rate"
   },
   {
    "depends_on": "auto_create_timesheets",

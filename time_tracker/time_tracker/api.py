@@ -160,9 +160,23 @@ def sync_media():
 
 	parent = frappe.get_doc(TIME_TRACKER_DOCTYPE, existing_name)
 
-	file_url = None
+	media_id = frappe.form_dict.get("media_id")
+
+	# Idempotency: the desktop client may re-upload the same media on overlapping
+	# sync cycles. Match on media_id so we update the existing row instead of
+	# appending a duplicate (which previously made one screenshot show N times).
+	existing_child = None
+	if media_id:
+		for row in parent.activity_media:
+			if row.media_id == media_id:
+				existing_child = row
+				break
+
+	# Only ingest a new File when we don't already have one for this media,
+	# otherwise we'd leave orphaned duplicate File docs behind.
+	file_url = existing_child.file if existing_child else None
 	uploaded_file = frappe.request.files.get("file")
-	if uploaded_file:
+	if uploaded_file and not file_url:
 		file_content = uploaded_file.read()
 		filename = frappe.form_dict.get("filename") or uploaded_file.filename
 		_file = frappe.get_doc({
@@ -176,14 +190,19 @@ def sync_media():
 		_file.save(ignore_permissions=True)
 		file_url = _file.file_url
 
-	child = parent.append("activity_media", {
-		"media_id": frappe.form_dict.get("media_id"),
+	values = {
+		"media_id": media_id,
 		"media_type": frappe.form_dict.get("media_type"),
 		"filename": frappe.form_dict.get("filename"),
 		"file_size": cint(frappe.form_dict.get("file_size")),
 		"status": frappe.form_dict.get("status", "pending"),
 		"file": file_url,
-	})
+	}
+
+	if existing_child:
+		existing_child.update(values)
+	else:
+		parent.append("activity_media", values)
 	parent.save(ignore_permissions=True)
 
 	frappe.response["message"] = "ok"
@@ -307,9 +326,7 @@ def create_timesheet_from_entries():
 	if not entry_names or not company:
 		frappe.throw(_("Entries and Company are required"))
 
-	settings = frappe.get_single("Tracker Settings") if frappe.db.exists("Tracker Settings", "Tracker Settings") else frappe._dict()
-	default_costing_rate = settings.get("costing_rate") or 0
-	default_billing_rate = settings.get("billing_rate") or 0
+	from time_tracker.time_tracker.doctype.tracker_settings.tracker_settings import get_user_rates
 
 	entries = frappe.get_all(
 		"Time Tracker Entry",
@@ -332,6 +349,7 @@ def create_timesheet_from_entries():
 
 	created = []
 	for user, user_entries in entries_by_user.items():
+		user_billing_rate, user_costing_rate = get_user_rates(user)
 		ts = frappe.get_doc({
 			"doctype": "Timesheet",
 			"company": company,
@@ -348,9 +366,9 @@ def create_timesheet_from_entries():
 					"project": e.project,
 					"task": e.task,
 					"is_billable": e.is_billable,
-					"billing_rate": e.billing_rate or default_billing_rate,
+					"billing_rate": e.billing_rate or user_billing_rate,
 					"billing_amount": e.billing_amount,
-					"costing_rate": default_costing_rate,
+					"costing_rate": user_costing_rate,
 				}
 				for e in user_entries
 			],

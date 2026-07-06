@@ -4,9 +4,9 @@ from frappe.utils import now_datetime
 
 
 def _create_timesheets(settings, update_last_run=True):
+	from time_tracker.time_tracker.doctype.tracker_settings.tracker_settings import get_user_rates
+
 	statuses = [s.strip() for s in settings.entries_status.split("\n") if s.strip()]
-	default_costing_rate = settings.costing_rate
-	default_billing_rate = settings.billing_rate
 
 	entries = frappe.get_all(
 		"Time Tracker Entry",
@@ -28,6 +28,7 @@ def _create_timesheets(settings, update_last_run=True):
 
 	created = []
 	for user, user_entries in entries_by_user.items():
+		user_billing_rate, user_costing_rate = get_user_rates(user)
 		try:
 			ts = frappe.get_doc({
 				"doctype": "Timesheet",
@@ -45,9 +46,9 @@ def _create_timesheets(settings, update_last_run=True):
 						"project": e.project,
 						"task": e.task,
 						"is_billable": e.is_billable,
-						"billing_rate": e.billing_rate or default_billing_rate,
+						"billing_rate": e.billing_rate or user_billing_rate,
 						"billing_amount": e.billing_amount,
-						"costing_rate": default_costing_rate,
+						"costing_rate": user_costing_rate,
 					}
 					for e in user_entries
 				],
